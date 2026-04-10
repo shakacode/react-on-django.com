@@ -16,6 +16,8 @@
     "prepare": "npm run sync:docs && npm run prepare:docs",
     "prepare:subset": "npm run sync:docs:subset && npm run prepare:docs:subset",
     "install:site": "npm --prefix prototypes/docusaurus ci",
+    "predev": "npm run install:site",
+    "prebuild": "npm run install:site",
     "dev": "npm --prefix prototypes/docusaurus run start",
     "build": "npm --prefix prototypes/docusaurus run build",
     "build:full": "npm run prepare && npm run build",
