@@ -1,0 +1,44 @@
+.main {
+  padding-bottom: 2.5rem;
+}
+
+.hero {
+  padding: 2.5rem 0 2rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  background: linear-gradient(180deg, #f7fbf8 0%, #ffffff 100%);
+}
+
+.eyebrow,
+.cardEyebrow {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 1rem;
+}
+
+.stepList {
+  margin: 0.85rem 0 0;
+  padding-left: 1.1rem;
+}
+
+@media (max-width: 996px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

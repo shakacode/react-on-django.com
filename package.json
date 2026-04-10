@@ -1,0 +1,24 @@
+{
+  "name": "react-on-django-com",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync:docs": "node scripts/sync-docs.mjs",
+    "sync:docs:subset": "node scripts/sync-docs.mjs --subset",
+    "prepare:docs": "node scripts/prepare-docs.mjs --target docusaurus",
+    "prepare:docs:subset": "node scripts/prepare-docs.mjs --target docusaurus --subset",
+    "audit:docs": "node scripts/audit-docs.mjs",
+    "test:docs-layout": "node --test scripts/docs-layout.test.mjs",
+    "test:prepare-docs": "node --test scripts/prepare-docs.test.mjs",
+    "test:docs": "node --test scripts/docs-layout.test.mjs scripts/prepare-docs.test.mjs",
+    "check:docs": "npm run audit:docs && npm run test:docs",
+    "prepare": "npm run sync:docs && npm run prepare:docs",
+    "prepare:subset": "npm run sync:docs:subset && npm run prepare:docs:subset",
+    "install:site": "npm --prefix prototypes/docusaurus ci",
+    "dev": "npm --prefix prototypes/docusaurus run start",
+    "build": "npm --prefix prototypes/docusaurus run build",
+    "build:full": "npm run prepare && npm run build",
+    "cloudflare:deploy": "npm run build:full && npx wrangler pages deploy prototypes/docusaurus/build --project-name ${CLOUDFLARE_PAGES_PROJECT:-react-on-django-com}"
+  }
+}

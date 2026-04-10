@@ -1,0 +1,12 @@
+/docs/README /docs 301
+/docs/README/ /docs 301
+/docs/introduction /docs 301
+/docs/introduction/ /docs 301
+/docs/pro/ /docs/pro/overview 301
+/docs/pro /docs/pro/overview 301
+/docs/guides/configuration/ /docs/guides/configuration 301
+/docs/guides/server-rendering/ /docs/guides/server-rendering 301
+/react-on-django/docs/* /docs/:splat 301
+/react-on-django/docs /docs 301
+/pro /docs/pro/overview 301
+/pro/ /docs/pro/overview 301
