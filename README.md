@@ -7,7 +7,7 @@ Production site workspace for `react-on-django.com`, built with Docusaurus.
 - Canonical markdown source belongs in `react-on-django/docs/`
 - This repo syncs docs into `content/upstream/docs`
 - A prepare step stages those docs into `prototypes/docusaurus/docs`
-- Site-owned pages stay here, such as the landing page, examples page, and Pro page
+- Site-owned pages stay here, such as the landing page, examples page, and licensing page
 
 ## Docs Ownership Rules
 

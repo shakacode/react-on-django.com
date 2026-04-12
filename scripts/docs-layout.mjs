@@ -7,13 +7,13 @@ export const docsSubsetEntries = [
   "getting-started/quick-start.md",
   "getting-started/create-react-on-django-app.md",
   "guides/client-rendering.md",
+  "guides/helper-apis.md",
   "guides/server-rendering.md",
   "guides/streaming-ssr.md",
   "guides/rsc.md",
   "guides/configuration.md",
   "guides/testing-and-operations.md",
-  "pro/overview.md",
-  "pro/upgrading-to-pro.md"
+  "guides/licensing.md"
 ];
 
 export async function exists(targetPath) {
@@ -52,7 +52,6 @@ export function docsLayoutPaths(docsRoot, layout) {
   return {
     layout,
     contentRoot: docsRoot,
-    proDocsRoot: path.join(docsRoot, "pro"),
     readmePath: path.join(docsRoot, "README.md")
   };
 }

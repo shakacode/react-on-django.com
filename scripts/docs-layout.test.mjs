@@ -26,7 +26,6 @@ test("detectDocsLayout returns consolidated for the current upstream docs shape"
 
   const layoutPaths = docsLayoutPaths(docsRoot, layout);
   assert.equal(layoutPaths.contentRoot, docsRoot);
-  assert.equal(layoutPaths.proDocsRoot, path.join(docsRoot, "pro"));
   assert.equal(layoutPaths.readmePath, path.join(docsRoot, "README.md"));
 });
 
@@ -35,8 +34,9 @@ test("subsetPathsForLayout includes the full bounded docs slice", () => {
 
   assert.ok(!paths.includes("README.md"));
   assert.ok(paths.includes("introduction.md"));
+  assert.ok(paths.includes("guides/helper-apis.md"));
   assert.ok(paths.includes("guides/testing-and-operations.md"));
-  assert.ok(paths.includes("pro/upgrading-to-pro.md"));
+  assert.ok(paths.includes("guides/licensing.md"));
 });
 
 test("layout helpers reject unsupported layout values", () => {

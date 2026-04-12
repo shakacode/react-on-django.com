@@ -18,17 +18,14 @@ const sidebars: SidebarsConfig = {
       label: "Guides",
       items: [
         "guides/client-rendering",
+        "guides/helper-apis",
         "guides/server-rendering",
         "guides/streaming-ssr",
         "guides/rsc",
         "guides/configuration",
         "guides/testing-and-operations",
+        "guides/licensing",
       ],
-    },
-    {
-      type: "category",
-      label: "Pro",
-      items: ["pro/overview", "pro/upgrading-to-pro"],
     },
   ],
 };

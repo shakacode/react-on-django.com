@@ -20,11 +20,11 @@ const paths = [
     href: "/docs/guides/server-rendering",
   },
   {
-    eyebrow: "Commercial tier",
-    title: "Plan the Pro path",
+    eyebrow: "Commercial use",
+    title: "Review licensing",
     description:
-      "Keep one documentation surface while adding the features that depend on the renderer and the shared runtime.",
-    href: "/pro",
+      "Use the same package for client rendering, SSR, streaming SSR, and RSC, then apply the commercial license only when production use requires it.",
+    href: "/licensing",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function HomePage(): ReactNode {
             <ul>
               <li>Canonical docs sync from `react-on-django/docs`</li>
               <li>Site UX lives in `react-on-django.com`</li>
-              <li>Cloudflare Pages deploys the static Docusaurus build</li>
+              <li>Cloudflare Workers Builds deploys the static Docusaurus build</li>
             </ul>
           </aside>
         </div>

@@ -17,7 +17,7 @@ react-on-django/docs -> content/upstream/docs -> prototypes/docusaurus/docs -> b
 1. `npm run sync:docs` copies docs from the local checkout or a shallow GitHub clone
 2. `npm run prepare:docs` stages the docs into the Docusaurus workspace
 3. Docusaurus builds static output at `prototypes/docusaurus/build`
-4. Cloudflare Pages deploys the static output
+4. Cloudflare Workers Builds deploys the static output
 
 ## Upstream Source
 
@@ -26,7 +26,7 @@ react-on-django/docs -> content/upstream/docs -> prototypes/docusaurus/docs -> b
 
 ## Deployment Target
 
-- Cloudflare Pages project: `react-on-django-com`
+- Cloudflare Workers project: `react-on-django-com`
 - Intended domain: `https://react-on-django.com/`
 
 ## Generated Directories

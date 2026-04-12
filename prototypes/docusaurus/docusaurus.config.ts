@@ -47,7 +47,7 @@ const config: Config = {
           label: "Docs",
         },
         {to: "/examples", label: "Examples", position: "left"},
-        {to: "/pro", label: "Pro", position: "left"},
+        {to: "/licensing", label: "Licensing", position: "left"},
         {
           href: "https://github.com/shakacode/react-on-django",
           label: "GitHub",
@@ -71,7 +71,7 @@ const config: Config = {
           title: "Project",
           items: [
             {label: "Examples", to: "/examples"},
-            {label: "Pro", to: "/pro"},
+            {label: "Licensing", to: "/licensing"},
             {label: "GitHub", href: "https://github.com/shakacode/react-on-django"},
           ],
         },
