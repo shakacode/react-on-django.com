@@ -21,6 +21,7 @@
     "dev": "npm --prefix prototypes/docusaurus run start",
     "build": "npm --prefix prototypes/docusaurus run build",
     "build:full": "npm run prepare && npm run build",
-    "cloudflare:deploy": "npm run build:full && npx wrangler pages deploy prototypes/docusaurus/build --project-name ${CLOUDFLARE_PAGES_PROJECT:-react-on-django-com}"
+    "deploy": "npx wrangler deploy",
+    "cloudflare:deploy": "npm run build:full && npm run deploy"
   }
 }

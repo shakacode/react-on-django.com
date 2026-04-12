@@ -42,16 +42,12 @@ Production site workspace for `react-on-django.com`, built with Docusaurus.
 
 If no upstream `docs/` directory exists yet, the sync step fails with a clear error so the missing source content is explicit.
 
-## Cloudflare Pages
+## Cloudflare Workers Builds
 
-- Project: `react-on-django-com`
+- Worker: `react-on-django-com`
 - Build output: `prototypes/docusaurus/build`
+- Wrangler config: `wrangler.jsonc`
 
-Required repository secrets:
-
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
-
-Optional repository variable:
-
-- `CLOUDFLARE_PAGES_PROJECT` (defaults to `react-on-django-com`)
+The production deploy path is `npm run build:full && npm run deploy`, which
+lets `wrangler deploy` publish the static site from
+`prototypes/docusaurus/build`.
