@@ -1,7 +1,7 @@
-/docs/README /docs 301
-/docs/README/ /docs 301
-/docs/introduction /docs 301
-/docs/introduction/ /docs 301
+/docs /docs/introduction 301
+/docs/ /docs/introduction 301
+/docs/README /docs/introduction 301
+/docs/README/ /docs/introduction 301
 /docs/pro /docs/guides/licensing 301
 /docs/pro/ /docs/guides/licensing 301
 /docs/pro/overview /docs/guides/licensing 301
@@ -11,6 +11,6 @@
 /docs/guides/configuration/ /docs/guides/configuration 301
 /docs/guides/server-rendering/ /docs/guides/server-rendering 301
 /react-on-django/docs/* /docs/:splat 301
-/react-on-django/docs /docs 301
+/react-on-django/docs /docs/introduction 301
 /pro /licensing 301
 /pro/ /licensing 301

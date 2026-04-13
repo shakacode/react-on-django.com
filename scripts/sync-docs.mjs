@@ -22,17 +22,43 @@ const defaultDocsPath = "/Users/justin/codex/react-on-django/docs";
 const defaultRepoUrl = "https://github.com/shakacode/react-on-django.git";
 const defaultRef = "main";
 
-function cloneRepo(repoUrl, ref) {
-  const tmpDir = mkdtempSync(path.join(os.tmpdir(), "react-on-django-docs-"));
+function runGit(args) {
+  execFileSync("git", args, {
+    stdio: "inherit"
+  });
+}
+
+function checkoutCommit(repoDir, sha) {
   try {
-    execFileSync("git", ["clone", "--depth", "1", "--branch", ref, repoUrl, tmpDir], {
-      stdio: "inherit"
-    });
+    runGit(["-C", repoDir, "checkout", "--detach", sha]);
+    return;
   } catch {
-    execFileSync("git", ["clone", "--depth", "1", repoUrl, tmpDir], {
-      stdio: "inherit"
-    });
+    runGit(["-C", repoDir, "fetch", "--depth", "1", "origin", sha]);
+    runGit(["-C", repoDir, "checkout", "--detach", "FETCH_HEAD"]);
   }
+}
+
+export function cloneRepo(repoUrl, ref, sha) {
+  const tmpDir = mkdtempSync(path.join(os.tmpdir(), "react-on-django-docs-"));
+  const desiredRef = ref || defaultRef;
+  try {
+    runGit(["clone", "--depth", "1", "--branch", desiredRef, repoUrl, tmpDir]);
+  } catch {
+    runGit(["clone", "--depth", "1", repoUrl, tmpDir]);
+    if (desiredRef && desiredRef !== defaultRef) {
+      try {
+        runGit(["-C", tmpDir, "checkout", "--detach", desiredRef]);
+      } catch {
+        runGit(["-C", tmpDir, "fetch", "--depth", "1", "origin", desiredRef]);
+        runGit(["-C", tmpDir, "checkout", "--detach", "FETCH_HEAD"]);
+      }
+    }
+  }
+
+  if (sha) {
+    checkoutCommit(tmpDir, sha);
+  }
+
   return tmpDir;
 }
 
@@ -90,8 +116,9 @@ async function resolveSourceDocsRoot() {
 
   const repoUrl = process.env.REACT_ON_DJANGO_REPO_URL ?? defaultRepoUrl;
   const ref = process.env.REACT_ON_DJANGO_REF ?? defaultRef;
+  const sha = process.env.REACT_ON_DJANGO_SHA;
   console.log(`Local docs missing at ${configuredDocs}. Cloning ${repoUrl} (${ref})...`);
-  const ephemeralClone = cloneRepo(repoUrl, ref);
+  const ephemeralClone = cloneRepo(repoUrl, ref, sha);
   const sourceDocsRoot = path.join(ephemeralClone, "docs");
 
   if (!(await exists(sourceDocsRoot))) {
@@ -100,7 +127,8 @@ async function resolveSourceDocsRoot() {
     );
   }
 
-  return {sourceDocsRoot, ephemeralClone, sourceLabel: `${repoUrl}#${ref}`};
+  const shaSuffix = sha ? `@${sha}` : "";
+  return {sourceDocsRoot, ephemeralClone, sourceLabel: `${repoUrl}#${ref}${shaSuffix}`};
 }
 
 async function main() {
@@ -144,7 +172,9 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}

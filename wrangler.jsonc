@@ -1,9 +1,0 @@
-{
-  "name": "react-on-django-com",
-  "compatibility_date": "2026-04-11",
-  "workers_dev": false,
-  "preview_urls": false,
-  "assets": {
-    "directory": "./prototypes/docusaurus/build"
-  }
-}
