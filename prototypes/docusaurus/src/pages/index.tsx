@@ -58,7 +58,7 @@ export default function HomePage(): ReactNode {
             <ul>
               <li>Canonical docs sync from `react-on-django/docs`</li>
               <li>Site UX lives in `react-on-django.com`</li>
-              <li>Cloudflare Workers Builds deploys the static Docusaurus build</li>
+              <li>Cloudflare Pages deploys the static Docusaurus build</li>
             </ul>
           </aside>
         </div>

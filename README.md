@@ -8,6 +8,7 @@ Production site workspace for `react-on-django.com`, built with Docusaurus.
 - This repo syncs docs into `content/upstream/docs`
 - A prepare step stages those docs into `prototypes/docusaurus/docs`
 - Site-owned pages stay here, such as the landing page, examples page, and licensing page
+- `react-on-django` dispatches this repo after docs pushes to `main`
 
 ## Docs Ownership Rules
 
@@ -40,14 +41,22 @@ Production site workspace for `react-on-django.com`, built with Docusaurus.
 2. `/Users/justin/codex/react-on-django/docs`
 3. Shallow clone of `https://github.com/shakacode/react-on-django.git`
 
+When the site repo is triggered from GitHub Actions, the source payload can also
+include an exact commit SHA. In that case the sync step clones the requested
+ref, then checks out the specific commit before preparing the site.
+
 If no upstream `docs/` directory exists yet, the sync step fails with a clear error so the missing source content is explicit.
 
-## Cloudflare Workers Builds
+## Cloudflare Pages
 
-- Worker: `react-on-django-com`
+- Pages project: `react-on-django-com`
 - Build output: `prototypes/docusaurus/build`
-- Wrangler config: `wrangler.jsonc`
+- Cloudflare account: `fed541b7e7055a428a1b045aa3cd2c89`
+- Optional repository variable: `CLOUDFLARE_PAGES_PROJECT`
 
 The production deploy path is `npm run build:full && npm run deploy`, which
-lets `wrangler deploy` publish the static site from
+lets `wrangler pages deploy` publish the static site from
 `prototypes/docusaurus/build`.
+
+If production deploys fail with Cloudflare API error `10000`, the repository
+secrets do not describe a token/account pair that can manage this Pages project.
